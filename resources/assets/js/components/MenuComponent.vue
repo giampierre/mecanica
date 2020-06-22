@@ -13,7 +13,7 @@
             <img src="images/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-            <span>Bienvinido,</span>
+            <span>Jordy,</span>
             <h2>Invitado</h2>
             </div>
         </div>
