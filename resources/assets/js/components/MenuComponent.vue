@@ -13,7 +13,7 @@
             <img src="images/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-            <span>Jordy,</span>
+            <span>Jordy</span>
             <h2>Invitado</h2>
             </div>
         </div>
@@ -30,6 +30,7 @@
                 <ul class="nav child_menu">
                     <li class="" v-bind:class="$route.fullPath == '/administrar/vehiculos' ? 'activ' : ''"><router-link to="/administrar/vehiculos">Vehículos</router-link></li>
                     <li class="" v-bind:class="$route.fullPath == '/administrar/productos' ? 'activ' : ''"><router-link to="/administrar/productos">Productos</router-link></li>
+                     <li class="" v-bind:class="$route.fullPath == '/administrar/categoria' ? 'activ' : ''"><router-link to="/administrar/categoria">Categoria</router-link></li>
                 </ul>
                 </li>
             </ul>
