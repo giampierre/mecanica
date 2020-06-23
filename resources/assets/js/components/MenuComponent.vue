@@ -29,7 +29,7 @@
                 <li><a><i class="fa fa-gear"></i> Adminstrar <span class="fa fa-gears"></span></a>
                 <ul class="nav child_menu">
                     <li><router-link :to="{name: 'administrarvehiculos'}">Vehículos</router-link></li>
-                    <li><a href="#">Productos</a></li>
+                    <li><router-link :to="{name: 'administrarproductos'}">Productos</router-link></li>
                 </ul>
                 </li>
             </ul>

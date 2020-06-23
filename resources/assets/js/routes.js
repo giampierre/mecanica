@@ -21,6 +21,12 @@ export default new Router({
         },
 
         {
+            path: '/administrar/productos',
+            name: 'administrarproductos',
+            component: require('./views/AdministrarProductos')
+        },
+
+        {
             path: '*',
             component: require('./views/404')
         }
