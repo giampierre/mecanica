@@ -45286,7 +45286,7 @@ var content = __webpack_require__(44);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("9984e782", content, false, {});
+var update = __webpack_require__(2)("bab886c2", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -45706,7 +45706,7 @@ var content = __webpack_require__(50);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("21dbdde8", content, false, {});
+var update = __webpack_require__(2)("f413ccf0", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -46176,7 +46176,7 @@ var content = __webpack_require__(55);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("870f8236", content, false, {});
+var update = __webpack_require__(2)("6b13d745", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -49385,7 +49385,7 @@ var content = __webpack_require__(62);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("642bee4e", content, false, {});
+var update = __webpack_require__(2)("32e6e428", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -49509,7 +49509,7 @@ var content = __webpack_require__(67);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("dc4be82c", content, false, {});
+var update = __webpack_require__(2)("892a6c60", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -50012,7 +50012,7 @@ var content = __webpack_require__(72);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("69fa0586", content, false, {});
+var update = __webpack_require__(2)("16d889ba", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -50036,7 +50036,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50176,9 +50176,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'agregar-articulos',
+  name: "agregar-articulos",
   mounted: function mounted() {
     var app = this;
     app.listarArticulos();
@@ -50193,22 +50215,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     agregarArticulo: function agregarArticulo() {
       var app = this;
-      var url = 'articulos/crear';
+      var url = "articulos/crear";
       axios.post(url, app.nuevoArticulo).then(function (response) {
         console.log("articulo registrado");
         new PNotify({
-          title: 'Articulo resgistrado',
-          text: 'Correctamente',
-          type: 'success',
-          styling: 'bootstrap3'
+          title: "Articulo resgistrado",
+          text: "Correctamente",
+          type: "success",
+          styling: "bootstrap3"
         });
       }).catch(function (error) {
         console.log("error");
         new PNotify({
-          title: 'Error al Registrar',
-          text: 'Articulo no registro',
-          type: 'success',
-          styling: 'bootstrap3'
+          title: "Error al Registrar",
+          text: "Articulo no registro",
+          type: "success",
+          styling: "bootstrap3"
         });
       });
       app.listarArticulos();
@@ -50216,7 +50238,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     listarArticulos: function listarArticulos() {
       var app = this;
-      var url = 'articulos/listar';
+      var url = "articulos/listar";
       axios.get(url).then(function (response) {
         app.articulos = response.data;
         console.log(app.articulos);
@@ -50225,7 +50247,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     }
   }
-
 });
 
 /***/ }),
@@ -50252,13 +50273,13 @@ var render = function() {
                   _vm._v(_vm._s(index + 1))
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(articulo.codigo) + " ")]),
+                _c("td", [_vm._v(_vm._s(articulo.codigo))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(articulo.nombre) + " ")]),
+                _c("td", [_vm._v(_vm._s(articulo.nombre))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(articulo.descripcion) + " ")]),
+                _c("td", [_vm._v(_vm._s(articulo.descripcion))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(articulo.precio) + " ")]),
+                _c("td", [_vm._v(_vm._s(articulo.precio))]),
                 _vm._v(" "),
                 _c("td", [
                   articulo.estado === "1"
@@ -50568,7 +50589,7 @@ var staticRenderFns = [
         attrs: { for: "name" }
       },
       [
-        _vm._v("Codigo "),
+        _vm._v("\n                    Codigo\n                    "),
         _c("span", { staticClass: "required" }, [_vm._v("*")])
       ]
     )
@@ -50584,7 +50605,7 @@ var staticRenderFns = [
         attrs: { for: "name" }
       },
       [
-        _vm._v("Articulo"),
+        _vm._v("\n                    Articulo\n                    "),
         _c("span", { staticClass: "required" }, [_vm._v("*")])
       ]
     )
@@ -50599,7 +50620,10 @@ var staticRenderFns = [
         staticClass: "col-form-label col-md-3 col-sm-3 label-align",
         attrs: { for: "name" }
       },
-      [_vm._v("Precio"), _c("span", { staticClass: "required" }, [_vm._v("*")])]
+      [
+        _vm._v("\n                    Precio\n                    "),
+        _c("span", { staticClass: "required" }, [_vm._v("*")])
+      ]
     )
   },
   function() {
@@ -50613,7 +50637,7 @@ var staticRenderFns = [
         attrs: { for: "name" }
       },
       [
-        _vm._v("Descripcion"),
+        _vm._v("\n                    Descripcion\n                    "),
         _c("span", { staticClass: "required" }, [_vm._v("*")])
       ]
     )
@@ -50690,7 +50714,7 @@ var content = __webpack_require__(77);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("67555450", content, false, {});
+var update = __webpack_require__(2)("de33db94", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -50814,7 +50838,7 @@ var content = __webpack_require__(82);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("1e053720", content, false, {});
+var update = __webpack_require__(2)("7a3c187a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
