@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('app');
 });
+
+Route::get('vehiculos/listar','VehiculoController@listarVehiculos');
+Route::post('vehiculos/crear','VehiculoController@crearVehiculo');
+

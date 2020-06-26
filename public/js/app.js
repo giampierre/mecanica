@@ -46293,9 +46293,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
     }, {
         path: '*',
         component: __webpack_require__(70)
-    }],
+    }]
 
-    mode: 'history'
+    //mode: 'history'
+
 
 }));
 
@@ -49532,7 +49533,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49549,8 +49550,150 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+  name: 'administrar-vehiculos',
+
+  mounted: function mounted() {
+    var app = this;
+    app.listarVehiculos();
+  },
+  data: function data() {
+    return {
+      nuevoVehiculo: {},
+      vehiculos: []
+    };
+  },
+
+
+  methods: {
+    listarVehiculos: function listarVehiculos() {
+      var app = this;
+      var url = 'vehiculos/listar';
+
+      axios.get(url).then(function (response) {
+        app.vehiculos = response.data;
+        console.log(app.vehiculos);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    guardarVehiculo: function guardarVehiculo() {
+      var app = this;
+      var url = 'vehiculos/crear';
+
+      //ARROW FUNCTIONº
+      axios.post(url, app.nuevoVehiculo).then(function (response) {
+        console.log('Vehículo resgistrado satisfactoriamente');
+        new PNotify({
+          title: 'Vehículo resgistrado',
+          text: 'satisfactoriamente',
+          type: 'success',
+          styling: 'bootstrap3'
+        });
+        app.listarVehiculos();
+        app.nuevoVehiculo = {};
+      }).catch(function (error) {
+        new PNotify({
+          title: 'Error al registrar',
+          text: 'Voler a intentar',
+          type: 'dager',
+          styling: 'bootstrap3'
+        });
+      });
+
+      //OR
+
+      //NORMAL FUNCTION
+      /* axios.post(url, app.nuevoVehiculo)
+       .then(function(response){
+          console.log('Vehículo resgistrado satisfactoriamente');
+       })
+       .catch(function(error){
+         console.log(error);
+       }) */
+    }
+  }
+
+});
 
 /***/ }),
 /* 69 */
@@ -49560,9 +49703,243 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("\n    Administrar Vehiculos\n")])
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12 col-sm-12" }, [
+      _c("div", { staticClass: "x_panel" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "x_content" }, [
+          _c("table", { staticClass: "table" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.vehiculos, function(vehiculo, index) {
+                return _c("tr", { key: vehiculo.index }, [
+                  _c("th", { attrs: { scope: "row" } }, [
+                    _vm._v(_vm._s(index + 1))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(vehiculo.placa))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(vehiculo.descripcion))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    vehiculo.estado === "1"
+                      ? _c("span", { staticClass: "badge badge-success" }, [
+                          _vm._v("Activo")
+                        ])
+                      : _c("span", { staticClass: "badge badge-danger" }, [
+                          _vm._v("Inactivo")
+                        ])
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade bs-example-modal-lg",
+        attrs: { tabindex: "-1", role: "dialog", "aria-hidden": "true" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", [
+                _c("div", { staticClass: "x_content" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        id: "demo-form",
+                        "data-parsley-validate": "",
+                        novalidate: ""
+                      }
+                    },
+                    [
+                      _c("label", { attrs: { for: "fullname" } }, [
+                        _vm._v("Placa * :")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.nuevoVehiculo.placa,
+                            expression: "nuevoVehiculo.placa"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "fullname",
+                          name: "fullname",
+                          required: ""
+                        },
+                        domProps: { value: _vm.nuevoVehiculo.placa },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.nuevoVehiculo,
+                              "placa",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "message" } }, [
+                        _vm._v("Descripción :")
+                      ]),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.nuevoVehiculo.descripcion,
+                            expression: "nuevoVehiculo.descripcion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          id: "message",
+                          required: "required",
+                          name: "message",
+                          "data-parsley-trigger": "keyup",
+                          "data-parsley-minlength": "20",
+                          "data-parsley-maxlength": "100",
+                          "data-parsley-minlength-message":
+                            "Come on! You need to enter at least a 20 caracters long comment..",
+                          "data-parsley-validation-threshold": "10"
+                        },
+                        domProps: { value: _vm.nuevoVehiculo.descripcion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.nuevoVehiculo,
+                              "descripcion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-secondary",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("Cancelar")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { type: "button", "data-dismiss": "modal" },
+                            on: {
+                              click: function($event) {
+                                return _vm.guardarVehiculo()
+                              }
+                            }
+                          },
+                          [_vm._v("Guardar Vehìculo")]
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "x_title" }, [
+      _c("h2", [_vm._v("Administrar Vehículos")]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "nav navbar-right panel_toolbox" }, [
+        _c("li", { staticClass: "dropdown" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: {
+                type: "button",
+                "data-toggle": "modal",
+                "data-target": ".bs-example-modal-lg"
+              }
+            },
+            [_vm._v("Nuevo vehículo")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "clearfix" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Placa")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Descripcion")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Estado")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title", attrs: { id: "myModalLabel" } }, [
+        _vm._v("Registrando Vehículo")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -36,11 +36,9 @@ export default new Router({
             component: require('./views/404')
         }
 
-        
-
     ],
 
-    mode: 'history'
+    //mode: 'history'
 
 
 })
