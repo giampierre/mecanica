@@ -12,30 +12,31 @@
             <div class="clearfix"></div>
           </div>
           <div class="x_content">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Placa</th>
-                  <th>Descripcion</th>
-                  <th>Estado</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(vehiculo, index) in vehiculos" :key="vehiculo.index">
-                  <th scope="row">{{index+1}}</th>
-                  <td>{{vehiculo.placa}}</td>
-                  <td>{{vehiculo.descripcion}}</td>
-                  <td>
-                    <span v-if="vehiculo.estado === '1'" class="badge badge-success">Activo</span>
-                    <span v-else class="badge badge-danger">Inactivo</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+<table class="table table-striped">
+<thead>
+  <tr>
+      <th>#</th>
+      <th>Placa</th>
+      <th>Descripcion</th>
+      <th>Estado</th>
+  </tr>
+</thead>
+<tbody> 
+  <tr v-for="(vehiculo, index) in vehiculos" :key="vehiculo.index">
+      <th scope="row">{{index+1}}</th>
+      <td>{{vehiculo.placa}}</td>
+      <td>{{vehiculo.descripcion}}</td>
+      <td>
+        <span v-if="vehiculo.estado === '1'" class="badge badge-success">Activo</span>
+        <span v-else class="badge badge-danger">Inactivo</span>
+      </td>
+  </tr> 
+</tbody>
+</table>
+</div>
+           
+</div>
+</div>
 
       <!-- Modal Crear y editar -->
 
@@ -57,7 +58,7 @@
                     <form id="demo-form" data-parsley-validate="" novalidate="">
 
                       <label for="fullname">Placa * :</label>
-                      <input type="text" v-model="nuevoVehiculo.placa" id="fullname" class="form-control" name="fullname" required="">
+                      <input type="text"  v-model="nuevoVehiculo.placa" id="fullname" class="form-control" name="fullname" required="">
 
                       <label for="message">Descripción :</label>
                       <textarea id="message" v-model="nuevoVehiculo.descripcion" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>

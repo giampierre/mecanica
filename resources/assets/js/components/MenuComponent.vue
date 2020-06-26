@@ -29,7 +29,7 @@
                 <li><a><i class="fa fa-gear"></i> Adminstrar <span class="fa fa-gears"></span></a>
                 <ul class="nav child_menu">
                     <li class="" v-bind:class="$route.fullPath == '/administrar/vehiculos' ? 'activ' : ''"><router-link to="/administrar/vehiculos">Vehículos</router-link></li>
-                    <li class="" v-bind:class="$route.fullPath == '/administrar/productos' ? 'activ' : ''"><router-link to="/administrar/productos">Productos</router-link></li>
+                    <li class="" v-bind:class="$route.fullPath == '/administrar/productos' ? 'activ' : ''"><router-link to="/administrar/productos">Almacen</router-link></li>
                      <li class="" v-bind:class="$route.fullPath == '/administrar/categoria' ? 'activ' : ''"><router-link to="/administrar/categoria">Categoria</router-link></li>
                 </ul>
                 </li>

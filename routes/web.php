@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 Route::get('vehiculos/listar','VehiculoController@listarVehiculos');
 Route::post('vehiculos/crear','VehiculoController@crearVehiculo');
-
+Route::post('articulos/crear','ArticuloController@crearArticulo');
+Route::get('articulos/listar','ArticuloController@listarArticulos');
