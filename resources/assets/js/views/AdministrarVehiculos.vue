@@ -16,7 +16,7 @@
 <thead>
   <tr>
       <th>#</th>
-      <th>Placa</th>
+      <th style="width: 80px !important;">Placa</th>
       <th>Descripcion</th>
       <th>Estado</th>
   </tr>
