@@ -11,9 +11,8 @@
                 class="btn btn-primary"
                 data-toggle="modal"
                 data-target=".bs-example-modal-lg"
-                @click="modalCrearArticulo()">
-                Nuevo
-              </button>
+                @click="modalCrearArticulo()"
+              >Nuevo</button>
             </li>
           </ul>
           <div class="clearfix"></div>
@@ -53,28 +52,24 @@
                 <span v-if="articulo.estado ==='1'" class="badge badge-success">Activo</span>
                 <span v-else class="badge badge-danger">Inactivo</span>
               </td>
-              <td><span class="badge badge-warning" 
-                        data-toggle="modal" 
-                        data-target=".bs-example-modal-lg"
-                        @click="modalEditarArticulo(articulo)">
-                        Editar
-                  </span>
+              <td>
+                <span
+                  class="badge badge-warning"
+                  data-toggle="modal"
+                  data-target=".bs-example-modal-lg"
+                  @click="modalEditarArticulo(articulo)"
+                >Editar</span>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-    <div
-      class="modal fade bs-example-modal-lg"
-      tabindex="-1"
-      role="dialog"
-      aria-hidden="true"
-    >
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">{{textModal}} </h4>
+            <h4 class="modal-title" id="myModalLabel">{{textModal}}</h4>
             <button type="button" class="close" data-dismiss="modal">
               <span aria-hidden="true">×</span>
             </button>
@@ -83,12 +78,11 @@
           <div class="modal-body">
             <div>
               <div class="x_content">
-                <form class="form-horizontal form-label-left" novalidate="">
+                <form class="form-horizontal form-label-left" novalidate>
                   <div class="item form-group">
-                    <label
-                      class="col-form-label col-md-3 col-sm-3 label-align"
-                      for="name"
-                      >Codigo OEM<span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">
+                      Codigo OEM
+                      <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6">
                       <input
@@ -103,10 +97,9 @@
                     </div>
                   </div>
                   <div class="item form-group">
-                    <label
-                      class="col-form-label col-md-3 col-sm-3 label-align"
-                      for="name"
-                      >Cod. Gen<span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">
+                      Cod. Gen
+                      <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6">
                       <input
@@ -123,10 +116,9 @@
                   </div>
 
                   <div class="item form-group">
-                    <label
-                      class="col-form-label col-md-3 col-sm-3 label-align"
-                      for="name"
-                      >Descripcion<span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">
+                      Descripcion
+                      <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6">
                       <textarea
@@ -140,10 +132,9 @@
                   </div>
 
                   <div class="item form-group">
-                    <label
-                      class="col-form-label col-md-3 col-sm-3 label-align"
-                      for="name"
-                      >Marca<span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">
+                      Marca
+                      <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6">
                       <input
@@ -158,13 +149,12 @@
                     </div>
                   </div>
                   <div class="item form-group">
-                    <label
-                      class="col-form-label col-md-3 col-sm-3 label-align"
-                      for="name"
-                      >Ubicacion<span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">
+                      Ubicacion
+                      <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6">
-                     <!-- <input
+                      <!-- <input
                         id="name"
                         class="form-control"
                         data-validate-length-range="6"
@@ -173,7 +163,7 @@
                         v-model="dataArticulo.id_ubi"
                         type="text"
                       />-->
-                      <select v-model="dataArticulo.id_ubi" name="id_ubi" id="" class="form-control" >
+                      <select v-model="dataArticulo.id_ubi" name="id_ubi" id class="form-control">
                         <option value="E1">E1</option>
                         <option value="I3">I3</option>
                         <option value="J3">J3</option>
@@ -184,10 +174,9 @@
                     </div>
                   </div>
                   <div class="item form-group">
-                    <label
-                      class="col-form-label col-md-3 col-sm-3 label-align"
-                      for="name"
-                      >Costo<span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">
+                      Costo
+                      <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6">
                       <input
@@ -203,10 +192,9 @@
                   </div>
 
                   <div class="item form-group">
-                    <label
-                      class="col-form-label col-md-3 col-sm-3 label-align"
-                      for="name"
-                      >Costo + IGV<span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">
+                      Costo + IGV
+                      <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6">
                       <input
@@ -222,10 +210,9 @@
                   </div>
 
                   <div class="item form-group">
-                    <label
-                      class="col-form-label col-md-3 col-sm-3 label-align"
-                      for="name"
-                      >Venta<span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">
+                      Venta
+                      <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6">
                       <input
@@ -241,10 +228,9 @@
                   </div>
 
                   <div class="item form-group">
-                    <label
-                      class="col-form-label col-md-3 col-sm-3 label-align"
-                      for="name"
-                      >Cantidad<span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">
+                      Cantidad
+                      <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6">
                       <input
@@ -262,19 +248,19 @@
                   <div class="ln_solid"></div>
                   <div class="form-group">
                     <div class="col-md-6 offset-md-3">
+                      <button type="submit" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
                       <button
-                        type="submit"
-                        class="btn btn-primary"
+                        v-if="modoEdit"
+                        class="btn btn-success"
                         data-dismiss="modal"
-                      >
-                        Cancelar
-                      </button>
-                  <button v-if="modoEdit"   class="btn btn-success" data-dismiss="modal" @click="actualizarArticulo(dataArticulo.id)">
-                        Actualizar 
-                      </button>
-                      <button v-else  class="btn btn-success" data-dismiss="modal" @click="agregarArticulo()">                      >
-                        Guardar
-                      </button>
+                        @click="actualizarArticulo(dataArticulo.id)"
+                      >Actualizar</button>
+                      <button
+                        v-else
+                        class="btn btn-success"
+                        data-dismiss="modal"
+                        @click="agregarArticulo()"
+                      >Guardar</button>
                     </div>
                   </div>
                 </form>
@@ -287,6 +273,7 @@
   </div>
 </template>
 
+
 <script>
 export default {
   name: "agregar-articulos",
@@ -296,7 +283,7 @@ export default {
   },
   data() {
     return {
-      nuevoArticulo: {},
+      //nuevoArticulo: {},
       articulos: [],
       modoEdit: false,
       textModal:'',      
@@ -340,8 +327,9 @@ export default {
     agregarArticulo() {
       let app = this;
       let url = "articulos/crear";
+      let nuevoArticulo = app.dataArticulo;
       axios
-        .post(url, app.nuevoArticulo)
+        .post(url, nuevoArticulo)
         .then((response) => {
           console.log("articulo registrado");
           new PNotify({
