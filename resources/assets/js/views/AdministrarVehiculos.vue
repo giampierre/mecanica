@@ -11,6 +11,7 @@
                 class="btn btn-primary"
                 data-toggle="modal"
                 data-target=".bs-example-modal-lg"
+                @click="modalCrearVehiculo()"
               >Nuevo vehículo</button>
             </li>
           </ul>
@@ -24,7 +25,7 @@
                 <th style="width: 80px !important;">Placa</th>
                 <th>Descripcion</th>
                 <th>Estado</th>
-                <th>Eliminar</th>
+                <th colspan="2">Opciones</th>
               </tr>
             </thead>
             <tbody>
@@ -38,6 +39,7 @@
                 </td>
                 <td>
                   <button class="btn btn-danger btn-sm btn-block" @click="eliminarVehiculo(vehiculo.id)">Eliminar</button>
+                  <button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target=".bs-example-modal-lg" @click="modalEditarVehiculo(vehiculo)">Editar</button>
                 </td>
               </tr>
             </tbody>
@@ -52,7 +54,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Registrando Vehículo</h4>
+            <h4 class="modal-title" id="myModalLabel">{{textoModal}}</h4>
             <button type="button" class="close" data-dismiss="modal">
               <span aria-hidden="true">×</span>
             </button>
@@ -65,7 +67,7 @@
                   <label for="fullname">Placa * :</label>
                   <input
                     type="text"
-                    v-model="nuevoVehiculo.placa"
+                    v-model="dataVehiculo.placa"
                     id="fullname"
                     class="form-control"
                     name="fullname"
@@ -75,7 +77,7 @@
                   <label for="message">Descripción :</label>
                   <textarea
                     id="message"
-                    v-model="nuevoVehiculo.descripcion"
+                    v-model="dataVehiculo.descripcion"
                     required="required"
                     class="form-control"
                     name="message"
@@ -88,12 +90,8 @@
 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-dismiss="modal"
-                      @click="guardarVehiculo()"
-                    >Guardar Vehículo</button>
+                    <button v-if="modoEdit" type="button" class="btn btn-primary" data-dismiss="modal" @click="actualizarVehiculo(dataVehiculo.id)">Actualizar Vehículo</button>
+                    <button v-else type="button" class="btn btn-primary" data-dismiss="modal" @click="guardarVehiculo()">Guardar Vehículo</button>
                   </div>
                 </form>
                 <!-- end form for validations -->
@@ -119,8 +117,11 @@ export default {
 
   data(){
     return {
-      nuevoVehiculo: {},
-      vehiculos:[]
+      dataVehiculo: {},
+      modoEdit: false,
+      //nuevoVehiculo: {},
+      vehiculos:[],
+      textoModal: ''
     }
   },
 
@@ -140,12 +141,21 @@ export default {
         })
     },
 
+    modalCrearVehiculo(){
+      let app = this;
+      app.modoEdit = false;
+      app.textoModal = 'Registrando Vehículo';
+      app.dataVehiculo = {};  
+    },
+
     guardarVehiculo(){
       let app = this;
       let url = 'vehiculos/crear';
 
       //ARROW FUNCTIONº
-      axios.post(url, app.nuevoVehiculo)
+      let nuevoVehiculo = app.dataVehiculo;
+
+      axios.post(url, nuevoVehiculo)
         .then(response => {
           console.log('Vehículo resgistrado satisfactoriamente');
           new PNotify({
@@ -155,7 +165,7 @@ export default {
               styling: 'bootstrap3'
           });
           app.listarVehiculos();
-          app.nuevoVehiculo = {};
+          app.dataVehiculo = {};
           })
         .catch(error => {
           new PNotify({
@@ -178,6 +188,37 @@ export default {
        }) */
       
       
+    },
+
+    modalEditarVehiculo(vehiculo){
+
+      let app = this;
+      app.modoEdit = true;
+      app.textoModal = 'Actualizando Vehículo';
+      app.dataVehiculo = vehiculo;
+      console.log(vehiculo);
+
+    },
+
+    actualizarVehiculo(id){
+
+      let app = this;
+      let url = 'vehiculos/actualizar/';
+
+      let editarVehiculo = app.dataVehiculo;
+
+      axios.put(url+id, editarVehiculo)
+        .then(response => {
+          new PNotify({
+              title: 'Vehículo actualizado',
+              text: 'satisfactoriamente',
+              type: 'success',
+              styling: 'bootstrap3'
+            });
+            app.listarVehiculos();
+        })
+        .catch(error => console.log(error))
+
     },
 
     eliminarVehiculo(id){
