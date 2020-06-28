@@ -25,7 +25,7 @@
                 <th style="width: 80px !important;">Placa</th>
                 <th>Descripcion</th>
                 <th>Estado</th>
-                <th colspan="2">Opciones</th>
+                <th colspan="2" class="text-center">Opciones</th>
               </tr>
             </thead>
             <tbody>
@@ -38,8 +38,10 @@
                   <span v-else class="badge badge-danger">Inactivo</span>
                 </td>
                 <td>
-                  <button class="btn btn-danger btn-sm btn-block" @click="eliminarVehiculo(vehiculo.id)">Eliminar</button>
-                  <button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target=".bs-example-modal-lg" @click="modalEditarVehiculo(vehiculo)">Editar</button>
+                  <button type="button" class="btn btn-round btn-sm btn-warning" data-toggle="modal" data-target=".bs-example-modal-lg" @click="modalEditarVehiculo(vehiculo)">Editar</button>
+                </td>
+                <td>
+                   <button type="button" class="btn btn-round btn-sm btn-danger" @click="eliminarVehiculo(vehiculo.id)">Eliminar</button>
                 </td>
               </tr>
             </tbody>
@@ -226,24 +228,39 @@ export default {
       let app = this;
       let url = 'vehiculos/eliminar/';
 
-      axios.put(url+id)
-        .then(responsa => {
-            new PNotify({
-              title: 'Vehículo eliminado',
-              text: 'satisfactoriamente',
-              type: 'success',
-              styling: 'bootstrap3'
-            });
-            app.listarVehiculos();
-        })
-        .catch(error => {
-            new PNotify({
-              title: 'Error al eliminar',
-              text: 'No eliminado',
-              type: 'danger',
-              styling: 'bootstrap3'
-            });
-        })
+      Vue.swal({
+        title: '¿Seguro de eliminar?',
+        text: "No podrá revertir esta acción",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#1cbb9c',
+        cancelButtonColor: '#ccc',
+        confirmButtonText: 'Sí, eliminar!'
+      }).then((result) => {
+        if (result.value) {
+
+          axios.put(url+id)
+            .then(responsa => {
+                new PNotify({
+                  title: 'Vehículo eliminado',
+                  text: 'satisfactoriamente',
+                  type: 'success',
+                  styling: 'bootstrap3'
+                });
+                app.listarVehiculos();
+            })
+            .catch(error => {
+                new PNotify({
+                  title: 'Error al eliminar',
+                  text: 'No eliminado',
+                  type: 'danger',
+                  styling: 'bootstrap3'
+                });
+          })
+        }
+      })
+
+      
 
 
     }
