@@ -9,7 +9,7 @@ class VehiculoController extends Controller
 {
    public function listarVehiculos()
    {
-       $vehiculos = Vehiculo::all();
+       $vehiculos = Vehiculo::where("estado","=","1")->get();
        return $vehiculos;
    }
 
@@ -23,5 +23,16 @@ class VehiculoController extends Controller
         $nuevoVehiculo->save();
 
         return $nuevoVehiculo;
+   }
+
+   public function eliminarVehiculo($id)
+   {
+       $eliminarVehiculo = Vehiculo::find($id);
+       $eliminarVehiculo->estado = "E";
+       
+       $eliminarVehiculo->save();
+
+       return $eliminarVehiculo;
+
    }
 }

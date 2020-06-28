@@ -49533,7 +49533,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49544,6 +49544,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49711,6 +49716,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
        .catch(function(error){
          console.log(error);
        }) */
+    },
+    eliminarVehiculo: function eliminarVehiculo(id) {
+
+      var app = this;
+      var url = 'vehiculos/eliminar/';
+
+      axios.put(url + id).then(function (responsa) {
+        new PNotify({
+          title: 'Vehículo eliminado',
+          text: 'satisfactoriamente',
+          type: 'success',
+          styling: 'bootstrap3'
+        });
+        app.listarVehiculos();
+      }).catch(function (error) {
+        new PNotify({
+          title: 'Error al eliminar',
+          text: 'No eliminado',
+          type: 'danger',
+          styling: 'bootstrap3'
+        });
+      });
     }
   }
 
@@ -49753,6 +49780,21 @@ var render = function() {
                       : _c("span", { staticClass: "badge badge-danger" }, [
                           _vm._v("Inactivo")
                         ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger btn-sm btn-block",
+                        on: {
+                          click: function($event) {
+                            return _vm.eliminarVehiculo(vehiculo.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Eliminar")]
+                    )
                   ])
                 ])
               }),
@@ -49939,7 +49981,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Descripcion")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Estado")])
+        _c("th", [_vm._v("Estado")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Eliminar")])
       ])
     ])
   },

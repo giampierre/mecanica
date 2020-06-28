@@ -24,6 +24,7 @@
                 <th style="width: 80px !important;">Placa</th>
                 <th>Descripcion</th>
                 <th>Estado</th>
+                <th>Eliminar</th>
               </tr>
             </thead>
             <tbody>
@@ -34,6 +35,9 @@
                 <td>
                   <span v-if="vehiculo.estado === '1'" class="badge badge-success">Activo</span>
                   <span v-else class="badge badge-danger">Inactivo</span>
+                </td>
+                <td>
+                  <button class="btn btn-danger btn-sm btn-block" @click="eliminarVehiculo(vehiculo.id)">Eliminar</button>
                 </td>
               </tr>
             </tbody>
@@ -99,6 +103,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -173,6 +178,33 @@ export default {
        }) */
       
       
+    },
+
+    eliminarVehiculo(id){
+
+      let app = this;
+      let url = 'vehiculos/eliminar/';
+
+      axios.put(url+id)
+        .then(responsa => {
+            new PNotify({
+              title: 'Vehículo eliminado',
+              text: 'satisfactoriamente',
+              type: 'success',
+              styling: 'bootstrap3'
+            });
+            app.listarVehiculos();
+        })
+        .catch(error => {
+            new PNotify({
+              title: 'Error al eliminar',
+              text: 'No eliminado',
+              type: 'danger',
+              styling: 'bootstrap3'
+            });
+        })
+
+
     }
 
   }
