@@ -327,7 +327,7 @@ export default {
       axios.put(url+id, editarArticulo)
       .then(response=>{
         new PNotify({
-              title: 'Vehículo actualizado',
+              title: 'Articulo actualizado',
               text: 'satisfactoriamente',
               type: 'success',
               styling: 'bootstrap3'

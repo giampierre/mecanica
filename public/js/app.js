@@ -54236,7 +54236,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var editarArticulo = app.dataArticulo;
       axios.put(url + id, editarArticulo).then(function (response) {
         new PNotify({
-          title: 'Vehículo actualizado',
+          title: 'Articulo actualizado',
           text: 'satisfactoriamente',
           type: 'success',
           styling: 'bootstrap3'
