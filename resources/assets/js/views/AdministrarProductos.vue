@@ -11,7 +11,7 @@
                 class="btn btn-primary"
                 data-toggle="modal"
                 data-target=".bs-example-modal-lg"
-              >
+                @click="modalCrearArticulo()">
                 Nuevo
               </button>
             </li>
@@ -34,6 +34,7 @@
               <th>Venta</th>
               <th>Cantidad</th>
               <th>Estado</th>
+              <th>Opc</th>
             </tr>
           </thead>
           <tbody>
@@ -49,10 +50,15 @@
               <td>{{ articulo.venta }}</td>
               <td>{{ articulo.cantidad }}</td>
               <td>
-                <span v-if="articulo.estado === '1'" class="badge badge-success"
-                  >Activo</span
-                >
+                <span v-if="articulo.estado ==='1'" class="badge badge-success">Activo</span>
                 <span v-else class="badge badge-danger">Inactivo</span>
+              </td>
+              <td><span class="badge badge-warning" 
+                        data-toggle="modal" 
+                        data-target=".bs-example-modal-lg"
+                        @click="modalEditarArticulo(articulo)">
+                        Editar
+                  </span>
               </td>
             </tr>
           </tbody>
@@ -68,7 +74,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Añadiendo Articulo</h4>
+            <h4 class="modal-title" id="myModalLabel">{{textModal}} </h4>
             <button type="button" class="close" data-dismiss="modal">
               <span aria-hidden="true">×</span>
             </button>
@@ -92,7 +98,7 @@
                         data-validate-words="2"
                         name="name"
                         type="text"
-                        v-model="nuevoArticulo.oem"
+                        v-model="dataArticulo.oem"
                       />
                     </div>
                   </div>
@@ -111,7 +117,7 @@
                         ata-validate-words="2"
                         name="name"
                         type="text"
-                        v-model="nuevoArticulo.cod_gen"
+                        v-model="dataArticulo.cod_gen"
                       />
                     </div>
                   </div>
@@ -126,7 +132,7 @@
                       <textarea
                         id="textarea"
                         required="required"
-                        v-model="nuevoArticulo.descripcion"
+                        v-model="dataArticulo.descripcion"
                         name="textarea"
                         class="form-control"
                       ></textarea>
@@ -146,7 +152,7 @@
                         data-validate-length-range="6"
                         data-validate-words="2"
                         name="name"
-                        v-model="nuevoArticulo.marca"
+                        v-model="dataArticulo.marca"
                         type="text"
                       />
                     </div>
@@ -158,15 +164,23 @@
                       >Ubicacion<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6">
-                      <input
+                     <!-- <input
                         id="name"
                         class="form-control"
                         data-validate-length-range="6"
                         data-validate-words="2"
                         name="name"
-                        v-model="nuevoArticulo.id_ubi"
+                        v-model="dataArticulo.id_ubi"
                         type="text"
-                      />
+                      />-->
+                      <select v-model="dataArticulo.id_ubi" name="id_ubi" id="" class="form-control" >
+                        <option value="E1">E1</option>
+                        <option value="I3">I3</option>
+                        <option value="J3">J3</option>
+                        <option value="H4">H4</option>
+                        <option value="G2">G2</option>
+                        <option value="E5">E5</option>
+                      </select>
                     </div>
                   </div>
                   <div class="item form-group">
@@ -182,7 +196,7 @@
                         data-validate-length-range="6"
                         data-validate-words="2"
                         name="name"
-                        v-model="nuevoArticulo.costo"
+                        v-model="dataArticulo.costo"
                         type="text"
                       />
                     </div>
@@ -201,7 +215,7 @@
                         data-validate-length-range="6"
                         data-validate-words="2"
                         name="name"
-                        v-model="nuevoArticulo.costo_igv"
+                        v-model="dataArticulo.costo_igv"
                         type="text"
                       />
                     </div>
@@ -220,7 +234,7 @@
                         data-validate-length-range="6"
                         data-validate-words="2"
                         name="name"
-                        v-model="nuevoArticulo.venta"
+                        v-model="dataArticulo.venta"
                         type="text"
                       />
                     </div>
@@ -239,7 +253,7 @@
                         data-validate-length-range="6"
                         data-validate-words="2"
                         name="name"
-                        v-model="nuevoArticulo.cantidad"
+                        v-model="dataArticulo.cantidad"
                         type="text"
                       />
                     </div>
@@ -255,12 +269,10 @@
                       >
                         Cancelar
                       </button>
-                      <button
-                        id="send"
-                        class="btn btn-success"
-                        data-dismiss="modal"
-                        @click="agregarArticulo()"
-                      >
+                  <button v-if="modoEdit"   class="btn btn-success" data-dismiss="modal" @click="actualizarArticulo(dataArticulo.id)">
+                        Actualizar 
+                      </button>
+                      <button v-else  class="btn btn-success" data-dismiss="modal" @click="agregarArticulo()">                      >
                         Guardar
                       </button>
                     </div>
@@ -286,9 +298,45 @@ export default {
     return {
       nuevoArticulo: {},
       articulos: [],
+      modoEdit: false,
+      textModal:'',      
+      dataArticulo: {}
     };
   },
   methods: {
+    modalCrearArticulo (){
+      let app= this;
+      app.modoEdit = false;
+      app.textModal= "Registrando Articulo";
+      app.dataArticulo = {};  
+    },
+    modalEditarArticulo(articulo){
+       let app = this;
+      app.modoEdit = true;
+      app.textModal ='Actualizando Articulo';
+      app.dataArticulo = articulo;
+      console.log(app.dataArticulo);
+
+    },
+    actualizarArticulo(id){
+      
+      let app = this;
+      let url = "articulos/actualizar/";
+
+      let editarArticulo= app.dataArticulo;
+      axios.put(url+id, editarArticulo)
+      .then(response=>{
+        new PNotify({
+              title: 'Vehículo actualizado',
+              text: 'satisfactoriamente',
+              type: 'success',
+              styling: 'bootstrap3'
+              });
+         app.listarArticulos();     
+      })
+      .catch(error => console.log(error));
+
+    },
     agregarArticulo() {
       let app = this;
       let url = "articulos/crear";

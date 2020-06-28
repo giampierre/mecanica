@@ -22,4 +22,5 @@ Route::put('vehiculos/eliminar/{id}', 'VehiculoController@eliminarVehiculo');
 
 Route::post('articulos/crear','ArticuloController@crearArticulo');
 Route::get('articulos/listar','ArticuloController@listarArticulos');
+Route::put('articulos/actualizar/{id}','ArticuloController@actualizarArticulo');
 
