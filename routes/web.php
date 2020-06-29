@@ -24,3 +24,12 @@ Route::post('articulos/crear','ArticuloController@crearArticulo');
 Route::get('articulos/listar','ArticuloController@listarArticulos');
 Route::put('articulos/actualizar/{id}','ArticuloController@actualizarArticulo');
 
+//Rutas para clientes
+
+Route::get('clientes/listar', 'ClienteController@listarClientes');
+Route::post('clientes/crear', 'ClienteController@crearCliente');
+Route::put('clientes/actualizar/{id}','ClienteController@actualizarCliente');
+Route::put('clientes/eliminar/{id}','ClienteController@eliminarCliente');
+
+
+

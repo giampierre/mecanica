@@ -32,6 +32,12 @@ export default new Router({
         },
 
         {
+            path: '/administrar/clientes',
+            name: 'administrarclientes',
+            component: require('./views/AdministrarClientes')
+        },
+
+        {
             path: '*',
             component: require('./views/404')
         }

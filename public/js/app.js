@@ -45323,7 +45323,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -45367,6 +45367,7 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -45527,6 +45528,24 @@ var render = function() {
                         "router-link",
                         { attrs: { to: "/administrar/categoria" } },
                         [_vm._v("Categoria")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      class:
+                        _vm.$route.fullPath == "/administrar/clientes"
+                          ? "activ"
+                          : ""
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: "/administrar/clientes" } },
+                        [_vm._v("Clientes")]
                       )
                     ],
                     1
@@ -46303,6 +46322,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
         path: '/administrar/categoria',
         name: 'administrarcategoria',
         component: __webpack_require__(73)
+    }, {
+        path: '/administrar/clientes',
+        name: 'administrarclientes',
+        component: __webpack_require__(97)
     }, {
         path: '*',
         component: __webpack_require__(78)
@@ -55292,6 +55315,624 @@ exports.push([module.i, ".swal2-popup.swal2-toast{flex-direction:row;align-items
 
 // exports
 
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(100)
+/* template */
+var __vue_template__ = __webpack_require__(101)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/AdministrarClientes.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1c34663e", Component.options)
+  } else {
+    hotAPI.reload("data-v-1c34663e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 98 */,
+/* 99 */,
+/* 100 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'administrar-clientes',
+
+    mounted: function mounted() {
+        var app = this;
+        app.listarClientes();
+    },
+    data: function data() {
+        return {
+            clientes: [],
+            dataCliente: {},
+            modoEdit: false,
+            textModal: '',
+            buscar: ''
+        };
+    },
+
+
+    methods: {
+        listarClientes: function listarClientes() {
+
+            var app = this;
+            var url = 'clientes/listar';
+
+            axios.get(url).then(function (response) {
+                app.clientes = response.data;
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        },
+        modalCrearCliente: function modalCrearCliente() {
+            var app = this;
+            app.modoEdit = false;
+            app.dataCliente = {};
+            app.textModal = 'Registrando cliente';
+        },
+        crearCliente: function crearCliente() {
+
+            var app = this;
+            var url = 'clientes/crear';
+            var nuevoCliente = app.dataCliente;
+            axios.post(url, nuevoCliente).then(function (response) {
+                new PNotify({
+                    title: 'Cliente resgistrado',
+                    text: 'satisfactoriamente',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+                app.listarClientes();
+                app.dataCliente = {};
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        },
+        modalEditarCliente: function modalEditarCliente(cliente) {
+            var app = this;
+            app.modoEdit = true;
+            app.dataCliente = cliente;
+            app.textModal = 'Editando cliente';
+        },
+        actualizarCliente: function actualizarCliente(id) {
+            var app = this;
+            var url = 'clientes/actualizar/';
+            var editarCliente = app.dataCliente;
+            axios.put(url + id, editarCliente).then(function (response) {
+                new PNotify({
+                    title: 'Cliente actualizado',
+                    text: 'satisfactoriamente',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+                app.listarClientes();
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        },
+        eliminarCliente: function eliminarCliente(id) {
+            var app = this;
+            var url = 'clientes/eliminar/';
+
+            Vue.swal({
+                title: '¿Seguro de eliminar?',
+                text: "No podrá revertir esta acción",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#1cbb9c',
+                cancelButtonColor: '#ccc',
+                confirmButtonText: 'Si, eliminar'
+            }).then(function (result) {
+                if (result.value) {
+
+                    axios.put(url + id).then(function (response) {
+                        new PNotify({
+                            title: 'Cliente eliminado',
+                            text: 'satisfactoriamente',
+                            type: 'success',
+                            styling: 'bootstrap3'
+                        });
+                        app.listarClientes();
+                    }).catch(function (error) {
+                        return console.log(error);
+                    });
+                }
+            });
+        }
+    },
+
+    computed: {
+        buscarCliente: function buscarCliente() {
+            var app = this;
+            return app.clientes.filter(function (cliente) {
+                return cliente.nombre.toLowerCase().includes(app.buscar.toLowerCase());
+            });
+        }
+    }
+
+});
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12 col-sm-12" }, [
+      _c("div", { staticClass: "x_panel" }, [
+        _c("div", { staticClass: "x_title" }, [
+          _c("h2", [
+            _vm._v("Administrar Clientes\n          "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.buscar,
+                  expression: "buscar"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Buscar por nombre" },
+              domProps: { value: _vm.buscar },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.buscar = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "nav navbar-right panel_toolbox" }, [
+            _c("li", { staticClass: "dropdown" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": ".bs-example-modal-lg"
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.modalCrearCliente()
+                    }
+                  }
+                },
+                [_vm._v("Nuevo cliente")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "clearfix" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "x_content" }, [
+          _c("table", { staticClass: "table table-striped" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.buscarCliente, function(cliente, index) {
+                return _c("tr", { key: cliente.id }, [
+                  _c("th", { attrs: { scope: "row" } }, [
+                    _vm._v(_vm._s(index + 1))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cliente.nombre))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cliente.dni))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    cliente.estado === "1"
+                      ? _c("span", { staticClass: "badge badge-success" }, [
+                          _vm._v("Activo")
+                        ])
+                      : _c("span", { staticClass: "badge badge-danger" }, [
+                          _vm._v("Inactivo")
+                        ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-round btn-sm btn-warning",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": ".bs-example-modal-lg"
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.modalEditarCliente(cliente)
+                          }
+                        }
+                      },
+                      [_vm._v("Editar")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-round btn-sm btn-danger",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.eliminarCliente(cliente.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Eliminar")]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade bs-example-modal-lg",
+        attrs: { tabindex: "-1", role: "dialog", "aria-hidden": "true" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c(
+                "h4",
+                { staticClass: "modal-title", attrs: { id: "myModalLabel" } },
+                [_vm._v(_vm._s(_vm.textModal))]
+              ),
+              _vm._v(" "),
+              _vm._m(1)
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", [
+                _c("div", { staticClass: "x_content" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        id: "demo-form",
+                        "data-parsley-validate": "",
+                        novalidate: ""
+                      }
+                    },
+                    [
+                      _c("label", { attrs: { for: "fullname" } }, [
+                        _vm._v("Nombre * :")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.dataCliente.nombre,
+                            expression: "dataCliente.nombre"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "fullname",
+                          name: "fullname",
+                          required: ""
+                        },
+                        domProps: { value: _vm.dataCliente.nombre },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.dataCliente,
+                              "nombre",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "fullname" } }, [
+                        _vm._v("DNI * :")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.dataCliente.dni,
+                            expression: "dataCliente.dni"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "fullname",
+                          name: "fullname",
+                          required: ""
+                        },
+                        domProps: { value: _vm.dataCliente.dni },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.dataCliente,
+                              "dni",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-secondary",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("Cancelar")]
+                        ),
+                        _vm._v(" "),
+                        _vm.modoEdit
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: {
+                                  type: "button",
+                                  "data-dismiss": "modal"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.actualizarCliente(
+                                      _vm.dataCliente.id
+                                    )
+                                  }
+                                }
+                              },
+                              [_vm._v("Actualizar cliente")]
+                            )
+                          : _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: {
+                                  type: "button",
+                                  "data-dismiss": "modal"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.crearCliente()
+                                  }
+                                }
+                              },
+                              [_vm._v("Guardar cliente")]
+                            )
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "80px !important" } }, [
+          _vm._v("Nombre")
+        ]),
+        _vm._v(" "),
+        _c("th", [_vm._v("dni")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Estado")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { colspan: "2" } }, [
+          _vm._v("Opciones")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: { type: "button", "data-dismiss": "modal" }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1c34663e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
