@@ -1,11 +1,9 @@
 <template>
   <div class="row">
-    <div class="col-md-12 col-sm-12">
+    <div class="col-md-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Administrar Clientes
-            <input type="text" class="form-control" v-model="buscar" placeholder="Buscar por nombre">
-          </h2>
+          <h2>Administrar clientes</h2>
           <ul class="nav navbar-right panel_toolbox">
             <li class="dropdown">
               <button
@@ -20,14 +18,20 @@
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
-          <table class="table table-striped">
+          <div class="row mb-3">
+            <div class="col-md-6 offset-md-3">
+              <input type="text" name="" id="" v-model="buscar" class="form-control" placeholder="Buscar cliente por nombre">
+            </div>
+          </div>
+          <!-- start project list -->
+          <table class="table table-striped projects">
             <thead>
               <tr>
-                <th>#</th>
-                <th style="width: 80px !important;">Nombre</th>
-                <th>dni</th>
-                <th>Estado</th>
-                <th colspan="2" class="text-center">Opciones</th>
+                <th style="width: 1%">#</th>
+                <th style="width: 20%">Nombre</th>
+                <th>DNI</th>
+                <th>estado</th>
+                <th colspan="2">Opciones</th>
               </tr>
             </thead>
             <tbody>
@@ -40,10 +44,10 @@
                   <span v-else class="badge badge-danger">Inactivo</span>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-round btn-sm btn-warning" data-toggle="modal" data-target=".bs-example-modal-lg" @click="modalEditarCliente(cliente)">Editar</button>
-                </td>
-                <td>
-                   <button type="button" class="btn btn-round btn-sm btn-danger" @click="eliminarCliente(cliente.id)">Eliminar</button>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-round btn-sm btn-warning" data-toggle="modal" data-target=".bs-example-modal-lg" @click="modalEditarCliente(cliente)">Editar</button>
+                    <button type="button" class="btn btn-round btn-sm btn-danger" @click="eliminarCliente(cliente.id)">Eliminar</button>
+                   </div>
                 </td>
               </tr>
             </tbody>
