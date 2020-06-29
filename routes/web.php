@@ -17,5 +17,19 @@ Route::get('/', function () {
 
 Route::get('vehiculos/listar','VehiculoController@listarVehiculos');
 Route::post('vehiculos/crear','VehiculoController@crearVehiculo');
+Route::put('vehiculos/actualizar/{id}', 'VehiculoController@actualizarVehiculo');
+Route::put('vehiculos/eliminar/{id}', 'VehiculoController@eliminarVehiculo');
+
 Route::post('articulos/crear','ArticuloController@crearArticulo');
 Route::get('articulos/listar','ArticuloController@listarArticulos');
+Route::put('articulos/actualizar/{id}','ArticuloController@actualizarArticulo');
+
+//Rutas para clientes
+
+Route::get('clientes/listar', 'ClienteController@listarClientes');
+Route::post('clientes/crear', 'ClienteController@crearCliente');
+Route::put('clientes/actualizar/{id}','ClienteController@actualizarCliente');
+Route::put('clientes/eliminar/{id}','ClienteController@eliminarCliente');
+
+
+

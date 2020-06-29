@@ -9,7 +9,7 @@ class VehiculoController extends Controller
 {
    public function listarVehiculos()
    {
-       $vehiculos = Vehiculo::all();
+       $vehiculos = Vehiculo::where("estado","=","1")->get();
        return $vehiculos;
    }
 
@@ -23,5 +23,32 @@ class VehiculoController extends Controller
         $nuevoVehiculo->save();
 
         return $nuevoVehiculo;
+   }
+
+   public function actualizarVehiculo(Request $request, $id)
+   {
+        $fecha_actual = new \DateTime();
+        $fecha_actual->format('d-m-Y H:i:s');
+
+        $actualizandoVehiculo = Vehiculo::find($id);
+        $actualizandoVehiculo->placa       = $request->placa;
+        $actualizandoVehiculo->descripcion = $request->descripcion;
+        $actualizandoVehiculo->estado      = "1";
+        $actualizandoVehiculo->updated_at = $fecha_actual;
+        
+        $actualizandoVehiculo->save();
+
+        return $actualizandoVehiculo;
+   }
+
+   public function eliminarVehiculo($id)
+   {
+       $eliminarVehiculo = Vehiculo::find($id);
+       $eliminarVehiculo->estado = "E";
+       
+       $eliminarVehiculo->save();
+
+       return $eliminarVehiculo;
+
    }
 }

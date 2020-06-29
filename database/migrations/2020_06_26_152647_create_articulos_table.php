@@ -15,12 +15,17 @@ class CreateArticulosTable extends Migration
     {
         Schema::create('articulos', function (Blueprint $table) {
             $table->increments('id');         
-            $table->string('codigo');
-            $table->longText('nombre');
-            $table->double('precio');
+            $table->string('oem')->nullable();
+            $table->longText('cod_gen')->nullable();            
             $table->longText('descripcion')->nullable();
+            $table->longText('marca')->nullable();
+            $table->char('id_ubi')->nullable();
+            $table->double('costo');
+            $table->double('costo_igv');           
+            $table->double('venta');
+            $table->char('cantidad');            
             $table->char('estado')->default('1');
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 
